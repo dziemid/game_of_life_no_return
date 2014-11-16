@@ -3,7 +3,7 @@ require 'world'
 describe World do 
 
   it "should display initial state when tick is called" do
-    screen = double("screen", :display)
+    screen = double("screen", :display => nil)
     initial_state = [ [true, true], [true, true] ]
     world = World.new(initial_state,screen)
 
@@ -13,3 +13,4 @@ describe World do
   end
   
 end
+

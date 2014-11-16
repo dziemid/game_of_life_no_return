@@ -9,7 +9,7 @@ class Screen
       end
       output = output + "\n"
     end
-    puts output
+    puts "#{output}\n"
   end
 
 end

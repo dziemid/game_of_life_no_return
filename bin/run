@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/screen'
+require_relative '../lib/world'
+
+initial_state = [ 
+  [false, true, false],
+  [false, true, false], 
+  [false, true, false] 
+]
+world = World.new(initial_state, Screen.new)
+
+while true do 
+  world.tick
+  sleep 1  
+end
