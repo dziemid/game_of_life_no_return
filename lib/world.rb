@@ -2,7 +2,6 @@ require_relative 'rules'
 require_relative 'game_state'
 
 class World
-
   
   def initialize(initial_state, screen)
     @state = GameState.new(initial_state)
@@ -30,11 +29,7 @@ class World
   def run_rules_for(cell, x, y)
     rules = Rules.new
     
-    run_around(x,y) do |i,j|
-      unless i == x && j == y
-          @state.alive_at?(i,j) { rules.another_neighbour! } 
-      end
-    end
+    @state.run_for_alive_around(x,y) { rules.another_neighbour! } 
     
     alive = lambda { @next_state.set(true, x, y) }
     dead = lambda { @next_state.set(false, x, y) }
@@ -44,12 +39,5 @@ class World
     nil
   end
 
-  def run_around(x,y)
-    (x-1..x+1).each do |i|
-      (y-1..y+1).each do |j|
-        yield(i,j)
-      end
-    end
-  end
-
+  
 end
